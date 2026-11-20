@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Noto+Sans+SC:wght@300..700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Geist', 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Noto Sans SC', 'PingFang SC', ui-monospace, monospace;
+  --color-lime: #d8f85c;
+  --color-lime-deep: #c6ee32;
+  --color-ink: #0c0d0f;
+  --color-sky: #1d8df2;
+  --color-sky-deep: #0b5fd0;
+  --color-mist: #f2f2f0;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-ink);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee,
+  .animate-fade-up {
+    animation: none;
+  }
+}
